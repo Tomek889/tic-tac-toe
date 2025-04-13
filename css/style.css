@@ -10,7 +10,6 @@
 * {
     margin: 0;
     font-family: "Delius Swash Caps", cursive;
-    background-color: #f7fbfc;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -47,6 +46,10 @@ h1, h2, h3, h4, h5, h6 {
 
 #root, #__next {
     isolation: isolate;
+}
+
+body {
+    background-color: #f7fbfc;
 }
 
 .game {
@@ -141,7 +144,8 @@ button:hover {
 
 .modal-content {
     background: white;
-    padding: 20px;
+    padding: 100px;
     border-radius: 5px;
     text-align: center;
+    font-size: 3rem;
 }
