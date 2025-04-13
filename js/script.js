@@ -16,7 +16,7 @@ const Gameboard = (() => {
     const resetBoard = () => board.fill('');
 
     const placeMarker = (marker, position) => {
-        if (board[position] === '') {
+        if (board[position] === '' && !checkWinner()) {
             board[position] = marker;
             return true;
         }
@@ -97,7 +97,16 @@ const GameController = (() => {
 })();
 
 const DisplayController = (() => {
-    
+    const displayBoard = () => {
+        const board = Gameboard.getBoard();
+        const squares = document.querySelectorAll('.square');
 
-    return {};
+        board.forEach((marker, index) => {
+            squares[index].textContent = marker;
+        });
+    };
+
+    return {
+        displayBoard,
+    };
 })();
