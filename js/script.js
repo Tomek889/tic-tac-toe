@@ -36,7 +36,7 @@ const Gameboard = (() => {
     };
     const isDraw = () => {
         return board.every(cell => cell !== '') && !checkWinner();
-    }
+    };
     
 
     return {
@@ -50,4 +50,8 @@ const Gameboard = (() => {
 
 const Player = (name, marker) => {
     return { name, marker }
+};
+
+Player.prototype.markSquare = function(position) {
+    Gameboard.placeMarker(this.marker, position);
 };
