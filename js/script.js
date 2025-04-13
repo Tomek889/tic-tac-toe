@@ -11,9 +11,10 @@ const Gameboard = (() => {
         [2, 4, 6],
     ];
     
-
     const getBoard = () => board;
+
     const resetBoard = () => board.fill('');
+
     const placeMarker = (marker, position) => {
         if (board[position] === '') {
             board[position] = marker;
@@ -21,6 +22,7 @@ const Gameboard = (() => {
         }
         return false;
     };
+
     const checkWinner = () => {
         for (let combo of winningCombos) {
             const [a, b, c] = combo;
@@ -34,10 +36,10 @@ const Gameboard = (() => {
         }
         return null;
     };
+
     const isDraw = () => {
         return board.every(cell => cell !== '') && !checkWinner();
     };
-    
 
     return {
         getBoard,
@@ -55,3 +57,31 @@ const Player = (name, marker) => {
 Player.prototype.markSquare = function(position) {
     Gameboard.placeMarker(this.marker, position);
 };
+
+const GameController = (() => {
+    const player1 = new Player('Player 1', 'X');
+    const player2 = new Player('Player 2', 'O');
+    let currentPlayer = player1;
+
+    const switchPlayer = () => {
+        currentPlayer = (currentPlayer === player1) ? player2 : player1;
+    };
+
+    const playRound = (position) => {
+        const successfulMove = currentPlayer.markSquare(position);
+        if (!successfulMove) {
+            return;
+        }
+        switchPlayer();
+    };
+
+    const resetGame = () => {
+        Gameboard.resetBoard();
+        currentPlayer = player1;
+    };
+
+    return {
+        playRound,
+        resetGame,
+    };
+})();
