@@ -132,9 +132,9 @@ const DisplayController = (() => {
                 const result = GameController.playRound(index);
                 displayBoard();
                 if (result.status === 'win') {
-                    alert(`${result.winner.getName()} wins!`);
+                    ModalController.showModal(`${result.winner.getName()} wins!`);
                 } else if (result.status === 'draw') {
-                    alert('Draw!');
+                    ModalController.showModal(`Draw!`);
                 }
             });
         });
