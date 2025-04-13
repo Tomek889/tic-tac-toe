@@ -51,16 +51,16 @@ const Gameboard = (() => {
 })();
 
 const Player = (name, marker) => {
-    return { name, marker }
-};
+    const markSquare = (position) => {
+        return Gameboard.placeMarker(marker, position);
+    };
 
-Player.prototype.markSquare = function(position) {
-    Gameboard.placeMarker(this.marker, position);
+    return { name, marker, markSquare };
 };
 
 const GameController = (() => {
-    const player1 = new Player('Player 1', 'X');
-    const player2 = new Player('Player 2', 'O');
+    const player1 = Player('Player 1', 'X');
+    const player2 = Player('Player 2', 'O');
     let currentPlayer = player1;
 
     const switchPlayer = () => {
@@ -110,3 +110,5 @@ const DisplayController = (() => {
         displayBoard,
     };
 })();
+
+
