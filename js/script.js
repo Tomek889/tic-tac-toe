@@ -110,11 +110,11 @@ const DisplayController = (() => {
         squares.forEach((square, index) => {
             square.addEventListener('click', () => {
                 const result = GameController.playRound(index);
-                displayBoard;
+                displayBoard();
                 if (result.status === 'win') {
                     alert(`${result.winner.name} wins!`);
-                } else {
-                    alert('Draw!')
+                } else if (result.status === 'draw') {
+                    alert('Draw!');
                 }
             });
         });
