@@ -102,7 +102,7 @@ body {
 
 input {
     width: 250px;
-    margin: 0px 10px;
+    margin: 10px 10px;
     font-size: 1.4rem;
     border-radius: 10px;
     border: 1px solid black;
@@ -110,11 +110,11 @@ input {
 }
 
 .inputs {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 button {
-    margin: 0 10px;
+    margin: 10px 10px;
     padding: 4px 24px;
     font-size: 1.4rem;
     border-radius: 10px;
