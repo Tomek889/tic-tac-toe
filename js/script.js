@@ -54,8 +54,10 @@ const Player = (name, marker) => {
     const markSquare = (position) => {
         return Gameboard.placeMarker(marker, position);
     };
+    const setName = (newName) => { name = newName; };
+    const getName = () => name;
 
-    return { name, marker, markSquare };
+    return { marker, markSquare, setName, getName };
 };
 
 const GameController = (() => {
@@ -90,20 +92,38 @@ const GameController = (() => {
         currentPlayer = player1;
     };
 
+    const getCurrentPlayer = () => currentPlayer.getName();
+
+    const setPlayer1Name = (newName) => {
+        player1.setName(newName);
+    };
+    const setPlayer2Name = (newName) => {
+        player2.setName(newName);
+    };
+
     return {
         playRound,
         resetGame,
+        getCurrentPlayer,
+        setPlayer1Name,
+        setPlayer2Name,
     };
 })();
 
 const DisplayController = (() => {
     const squares = document.querySelectorAll('.square');
+    const turn = document.querySelector('.turn');
+    const restartButton = document.querySelector('.restart');
+    const changeNamesButton = document.querySelector('.set-names');
+    const player1NameInput = document.querySelector('#player1-name');
+    const player2NameInput = document.querySelector('#player2-name');
 
     const displayBoard = () => {
         const board = Gameboard.getBoard();
         board.forEach((marker, index) => {
             squares[index].textContent = marker;
         });
+        turn.textContent = `${GameController.getCurrentPlayer()}'s turn`
     };
 
     const addClickEvents = () => {
@@ -112,13 +132,31 @@ const DisplayController = (() => {
                 const result = GameController.playRound(index);
                 displayBoard();
                 if (result.status === 'win') {
-                    alert(`${result.winner.name} wins!`);
+                    alert(`${result.winner.getName()} wins!`);
                 } else if (result.status === 'draw') {
                     alert('Draw!');
                 }
             });
         });
     };
+
+    restartButton.addEventListener('click', () => {
+        GameController.resetGame();
+        displayBoard();
+    });
+
+    changeNamesButton.addEventListener('click', () => {
+        console.log('klik')
+        const name1 = player1NameInput.value.trim();
+        const name2 = player2NameInput.value.trim();
+        if (name1) {
+            GameController.setPlayer1Name(name1);
+        }    
+        if (name2) {
+            GameController.setPlayer2Name(name2);
+        }
+        displayBoard();
+    });
 
     addClickEvents();
     displayBoard();

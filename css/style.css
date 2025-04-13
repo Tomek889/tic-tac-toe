@@ -10,6 +10,7 @@
 * {
     margin: 0;
     font-family: "Delius Swash Caps", cursive;
+    background-color: #f7fbfc;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -48,8 +49,8 @@ h1, h2, h3, h4, h5, h6 {
     isolation: isolate;
 }
 
-html {
-    height: 100vh;
+.game {
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,5 +75,20 @@ html {
 }
 
 .square:hover {
-    background-color: rgba(152, 149, 149, 0.5);
+    background-color: rgba(214, 230, 242, 0.8);
+}
+
+.heading {
+    font-size: 4rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 30px 0px;
+    color: #769fcd;
+}
+
+.turn {
+    text-align: center;
+    color: #769fcd;
+    padding: 30px 0px;
+    font-size: 2.5rem;
 }
