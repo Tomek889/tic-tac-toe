@@ -97,18 +97,29 @@ const GameController = (() => {
 })();
 
 const DisplayController = (() => {
+    const squares = document.querySelectorAll('.square');
+
     const displayBoard = () => {
         const board = Gameboard.getBoard();
-        const squares = document.querySelectorAll('.square');
-
         board.forEach((marker, index) => {
             squares[index].textContent = marker;
         });
     };
 
-    return {
-        displayBoard,
+    const addClickEvents = () => {
+        squares.forEach((square, index) => {
+            square.addEventListener('click', () => {
+                const result = GameController.playRound(index);
+                displayBoard;
+                if (result.status === 'win') {
+                    alert(`${result.winner.name} wins!`);
+                } else {
+                    alert('Draw!')
+                }
+            });
+        });
     };
+
+    addClickEvents();
+    displayBoard();
 })();
-
-
