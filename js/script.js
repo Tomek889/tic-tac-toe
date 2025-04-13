@@ -95,3 +95,9 @@ const GameController = (() => {
         resetGame,
     };
 })();
+
+const DisplayController = (() => {
+    
+
+    return {};
+})();
