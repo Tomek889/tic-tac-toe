@@ -47,14 +47,31 @@ h1, h2, h3, h4, h5, h6 {
     isolation: isolate;
 }
 
+html {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .board {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 140px);
+    grid-template-rows: repeat(3, 140px);
+    gap: 10px;
 }
 
 .square {
-    width: 150px;
-    height: 150px;
-    background-color: gray;
+    width: 140px;
+    height: 140px;
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    border-radius: 10px;
+}
+
+.square:hover {
+    background-color: rgba(152, 149, 149, 0.5);
 }
