@@ -161,3 +161,22 @@ const DisplayController = (() => {
     addClickEvents();
     displayBoard();
 })();
+
+const ModalController = (() => {
+    const modal = document.querySelector('#modal');
+    const modalMessage = document.querySelector('#modal-message');
+    const modalClose = document.querySelector('#modal-close');
+
+    modalClose.addEventListener('click', hideModal);
+
+    function showModal(message) {
+        modalMessage.textContent = message;
+        modal.classList.remove('hidden');
+    }
+
+    function hideModal() {
+        modal.classList.add('hidden');
+    }
+
+    return { showModal, hideModal };
+})();
