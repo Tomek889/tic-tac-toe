@@ -70,9 +70,19 @@ const GameController = (() => {
     const playRound = (position) => {
         const successfulMove = currentPlayer.markSquare(position);
         if (!successfulMove) {
-            return;
+            return { status: 'invalid' };
         }
+
+        if (Gameboard.checkWinner()) {
+            return { status: 'win', winner: currentPlayer };
+        }
+
+        if (Gameboard.isDraw())  {
+            return { status: 'draw' };
+        }
+
         switchPlayer();
+        return { status: 'continue', nextPlayer: currentPlayer};
     };
 
     const resetGame = () => {
