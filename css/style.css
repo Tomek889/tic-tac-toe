@@ -9,6 +9,7 @@
   
 * {
     margin: 0;
+    font-family: "Delius Swash Caps", cursive;
 }
 
 @media (prefers-reduced-motion: no-preference) {
